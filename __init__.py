@@ -1,5 +1,6 @@
 # import the main window object (mw) from aqt
 from aqt import mw
+from aqt.utils import tooltip
 # import all of the Qt GUI library
 from aqt.qt import *
 
@@ -41,6 +42,7 @@ def importCSVs():
                 with open(f) as csvfile:
                     importCSV(csv.reader(csvfile))
     mw.reset()
+    tooltip("Complete: Import card scheduling info from CSV")
 
 # create a new menu item
 action = QAction("Import card scheduling info from CSV", mw)
