@@ -3,6 +3,7 @@ from aqt import mw
 from aqt.utils import tooltip
 # import all of the Qt GUI library
 from aqt.qt import *
+from anki import consts
 
 import csv
 import os
@@ -21,7 +22,8 @@ def importCSV(reader):
             mw.col.sched.schedule_cards_as_new([cid])
         else:
             days = (due - date.today()).days
-            mw.col.sched.set_due_date([cid], 0)
+            card.type = consts.CARD_TYPE_REV
+            card.queue = consts.QUEUE_TYPE_REV
             card.due = mw.col.sched.today + days
             card.ivl = ivl
             card.factor = factor
@@ -41,6 +43,7 @@ def importCSVs():
             for f in fileNames:
                 with open(f) as csvfile:
                     importCSV(csv.reader(csvfile))
+    mw.col.save()
     mw.reset()
     tooltip("Complete: Import card scheduling info from CSV")
 
