@@ -1,5 +1,7 @@
 # Anki Import Scheduling Info From CSV
 
+Anki addon ID: [891862080](https://ankiweb.net/shared/info/891862080)
+
 This is a small addon to reschedule cards based on the contents of a CSV file.
 Here is an example CSV:
 
